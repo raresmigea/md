@@ -11,13 +11,24 @@ converter = new showdown.Converter();
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Expressas' });
 });
+
 app.post('/api/world', (req, res) => {
-  console.log(req.body);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`
-  );
+  // console.log(req.body);
+  fs = require('fs');
+  fs.readFile(__dirname + '/posts/react-v16.13.0.md', 'utf8', function (
+    err,
+    data
+  ) {
+    if (err) {
+      return console.log(err);
+    }
+    text = data;
+    html = converter.makeHtml(text);
+    res.send(`I received your POST request. This is what you sent me: ${html}`);
+  });
 });
 
+let html = '';
 fs = require('fs');
 fs.readFile(__dirname + '/posts/react-v16.13.0.md', 'utf8', function (
   err,
@@ -30,8 +41,10 @@ fs.readFile(__dirname + '/posts/react-v16.13.0.md', 'utf8', function (
   html = converter.makeHtml(text);
   // res.json(['markdown', html]);
   // console.log(data);
-  console.log(html);
+  // console.log(html);
 });
 console.log('dd: ', __dirname);
+
+console.log('h: ', html);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
