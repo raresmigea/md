@@ -10,34 +10,19 @@ converter = new showdown.Converter();
 
 app.post('/api/world', (req, res) => {
   fs = require('fs');
-  fs.readFile(__dirname + '/posts/react-v16.13.0.md', 'utf8', function (
-    err,
-    data
-  ) {
-    if (err) {
-      return console.log(err);
+  // fs.readFile(__dirname + '/posts/react-v16.13.0.md', 'utf8', function (
+  fs.readFile(
+    __dirname + '/posts/React v16.13.0 is VERY cool!.md',
+    'utf8',
+    function (err, data) {
+      if (err) {
+        return console.log(err);
+      }
+      text = data;
+      html = converter.makeHtml(text);
+      res.send(html);
     }
-    text = data;
-    html = converter.makeHtml(text);
-    res.send(html);
-  });
+  );
 });
-
-let html = '';
-fs = require('fs');
-fs.readFile(__dirname + '/posts/react-v16.13.0.md', 'utf8', function (
-  // fs.readFile(__dirname + '/posts/React v16.13.0 is VERY cool!.md', 'utf8', function (
-  err,
-  data
-) {
-  if (err) {
-    return console.log(err);
-  }
-  text = data;
-  html = converter.makeHtml(text);
-});
-console.log('dd: ', __dirname);
-
-console.log('h: ', html);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

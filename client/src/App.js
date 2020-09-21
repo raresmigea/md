@@ -27,8 +27,7 @@ class App extends Component {
     const title = titleRaw
       .replace(/[&\/\\#, +()$~%'":*?<>{}]/g, '-')
       .toLowerCase();
-    console.log('title: ', title);
-    console.log('html: ', html);
+
     return title;
   };
 
@@ -49,6 +48,11 @@ class App extends Component {
       <div className='App'>
         <Router>
           <div>
+            <ul>
+              <li>
+                <Link to={`/blog/${title}`}>{title}</Link>
+              </li>
+            </ul>
             <Switch>
               <Route path={`/blog/${title}`}>
                 <Page data={this.state.responseToPost} />
