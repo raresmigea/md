@@ -16,22 +16,12 @@ class App extends Component {
     post: '',
     responseToPost: '',
   };
+
   componentDidMount() {
     this.getData();
   }
 
-  computeTitle = (html) => {
-    const start = html.indexOf('"');
-    const end = html.indexOf('</p>');
-    const titleRaw = html.substr(start + 1, end - 19);
-    const title = titleRaw
-      .replace(/[&\/\\#, +()$~%'":*?<>{}]/g, '-')
-      .toLowerCase();
-
-    return title;
-  };
-
-  getData = async (e) => {
+  getData = async () => {
     const response = await fetch('/api/world', {
       method: 'POST',
       headers: {
@@ -42,6 +32,17 @@ class App extends Component {
     const body = await response.text();
     this.setState({ responseToPost: body });
   };
+
+  computeTitle = (html) => {
+    const start = html.indexOf('"');
+    const end = html.indexOf('</p>');
+    const titleRaw = html.substr(start + 1, end - 19);
+    const title = titleRaw
+      .replace(/[&\/\\#, +()$~%'":*?<>{}]/g, '-')
+      .toLowerCase();
+    return title;
+  };
+
   render() {
     const title = this.computeTitle(this.state.responseToPost);
     return (
