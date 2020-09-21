@@ -8,12 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 converter = new showdown.Converter();
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Expressas' });
-});
-
 app.post('/api/world', (req, res) => {
-  // console.log(req.body);
   fs = require('fs');
   fs.readFile(__dirname + '/posts/react-v16.13.0.md', 'utf8', function (
     err,
@@ -24,7 +19,7 @@ app.post('/api/world', (req, res) => {
     }
     text = data;
     html = converter.makeHtml(text);
-    res.send(`I received your POST request. This is what you sent me: ${html}`);
+    res.send(html);
   });
 });
 
@@ -39,9 +34,6 @@ fs.readFile(__dirname + '/posts/react-v16.13.0.md', 'utf8', function (
   }
   text = data;
   html = converter.makeHtml(text);
-  // res.json(['markdown', html]);
-  // console.log(data);
-  // console.log(html);
 });
 console.log('dd: ', __dirname);
 
