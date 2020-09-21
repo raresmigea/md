@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <p>{this.state.responseToPost}</p>
+        <div dangerouslySetInnerHTML={{ __html: this.state.responseToPost }} />
       </div>
     );
   }
