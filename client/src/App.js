@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Page from './components/Page';
 import './App.css';
@@ -36,13 +29,19 @@ class App extends Component {
 
   // compute the title of the .html file
   computeTitle = (html) => {
-    const start = html.indexOf('"');
-    const end = html.indexOf('</p>');
-    const titleRaw = html.substr(start + 1, end - 19);
+    const start = html.indexOf('//');
+    const titleRaw = html.substr(0, start - 3);
+    console.log('start: ', start);
+    console.log('titleRaw: ', titleRaw);
     const title = titleRaw
-      .replace(/[&\/\\#, +()$~%'":*?<>{}]/g, '-')
+      .replace(/[&\\#, +()$~%'":*?!@<>^{}]/g, '-')
       .toLowerCase();
     return title;
+  };
+
+  // removes the concatenated title of the file which was added on the server
+  removeTitleFromFile = (response) => {
+    return response.substring(response.indexOf('//') + 2, response.length);
   };
 
   render() {
@@ -58,7 +57,9 @@ class App extends Component {
             </ul>
             <Switch>
               <Route path={`/blog/${title}`}>
-                <Page data={this.state.responseToPost} />
+                <Page
+                  data={this.removeTitleFromFile(this.state.responseToPost)}
+                />
               </Route>
             </Switch>
           </div>
