@@ -21,8 +21,9 @@ class App extends Component {
     this.getData();
   }
 
+  // get .html file from server
   getData = async () => {
-    const response = await fetch('/api/world', {
+    const response = await fetch('/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,6 +34,7 @@ class App extends Component {
     this.setState({ responseToPost: body });
   };
 
+  // compute the title of the .html file
   computeTitle = (html) => {
     const start = html.indexOf('"');
     const end = html.indexOf('</p>');
