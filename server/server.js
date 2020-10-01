@@ -1,12 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const showdown = require('showdown');
+import express from 'express';
+import { json, urlencoded } from 'body-parser';
+import { Converter } from 'showdown';
 const app = express();
 const port = process.env.PORT || 5000;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 
-converter = new showdown.Converter();
+converter = new Converter();
 
 // reading the names of all files in the folder
 let filePath = '';
