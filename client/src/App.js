@@ -31,8 +31,6 @@ class App extends Component {
   computeTitle = (html) => {
     const start = html.indexOf('//');
     const titleRaw = html.substr(0, start - 3);
-    console.log('start: ', start);
-    console.log('titleRaw: ', titleRaw);
     const title = titleRaw
       .replace(/[&\\#, +()$~%'":*?!@<>^{}]/g, '-')
       .toLowerCase();
