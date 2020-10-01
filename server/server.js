@@ -16,7 +16,6 @@ fs.readdir(__dirname + '/posts', (err, files) => {
   else {
     console.log('\nCurrent directory filenames:');
     files.forEach((file) => {
-      console.log(file);
       filePath = file;
     });
   }
