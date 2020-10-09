@@ -1,11 +1,12 @@
 import express from 'express';
 import { json, urlencoded } from 'body-parser';
 import { Converter } from 'showdown';
+
 const app = express();
 const port = process.env.PORT || 5000;
+
 app.use(json());
 app.use(urlencoded({ extended: true }));
-
 converter = new Converter();
 
 // reading the names of all files in the folder
