@@ -27,7 +27,7 @@ class App extends Component {
     this.setState({ responseToPost: body });
   };
 
-  // compute the title of the .html file
+  // computes the title of the .html file
   computeTitle = (html) => {
     const start = html.indexOf('//');
     const titleRaw = html.substr(0, start - 3);
