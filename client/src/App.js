@@ -14,7 +14,7 @@ class App extends Component {
     this.getData();
   }
 
-  // get .html file from server
+  // gets .html file from server
   getData = async () => {
     const response = await fetch('/api', {
       method: 'POST',
