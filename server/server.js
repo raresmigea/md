@@ -22,7 +22,7 @@ fs.readdir(__dirname + '/posts', (err, files) => {
   }
 });
 
-// converts a file from .md to .html and send it to client
+// converts a file from md to html and send it to client
 app.post('/api', (req, res) => {
   fs = require('fs');
   fs.readFile(__dirname + '/posts/' + filePath, 'utf8', function (err, data) {
