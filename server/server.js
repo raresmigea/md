@@ -9,7 +9,7 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 converter = new Converter();
 
-// reads the names of all files in the folder
+// reads the names of all files in the folder.
 let filePath = '';
 fs = require('fs');
 fs.readdir(__dirname + '/posts', (err, files) => {
@@ -22,7 +22,7 @@ fs.readdir(__dirname + '/posts', (err, files) => {
   }
 });
 
-// converts a file from md to html and sends it to client
+// converts a file from md to html and sends it to client.
 app.post('/api', (req, res) => {
   fs = require('fs');
   fs.readFile(__dirname + '/posts/' + filePath, 'utf8', function (err, data) {
