@@ -9,7 +9,7 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 converter = new Converter();
 
-// reads the names of all files in the folder.
+// reads the names of all files in the folder
 let filePath = '';
 fs = require('fs');
 fs.readdir(__dirname + '/posts', (err, files) => {
