@@ -37,7 +37,7 @@ class App extends Component {
     return title;
   };
 
-  // removes the concatenated title of the file which was added on the server
+  // removes the file's concatenated title which was added on server
   removeTitleFromFile = (response) => {
     return response.substring(response.indexOf('//') + 2, response.length);
   };
