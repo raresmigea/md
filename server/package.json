@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "morgan": "^1.9.1",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.13",
     "showdown": "^1.9.1"
   }
 }
