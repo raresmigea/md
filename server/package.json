@@ -25,6 +25,6 @@
     "helmet": "^4.6.0",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.19",
-    "showdown": "^1.9.1"
+    "showdown": "^2.1.0"
   }
 }
